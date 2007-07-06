@@ -13,9 +13,9 @@ namespace B.Common
         /// <summary>
         /// Gets the week number of the specified date.
         /// </summary>
-        /// <param name="year">The year.</param>
-        /// <param name="month">The month.</param>
-        /// <param name="day">The day.</param>
+        /// <param path="year">The year.</param>
+        /// <param path="month">The month.</param>
+        /// <param path="day">The day.</param>
         /// <returns></returns>
         [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow")]
         public static int WeekNumber(int year, int month, int day)
@@ -45,7 +45,7 @@ namespace B.Common
         /// <summary>
         /// Gets the week number of the specified date.
         /// </summary>
-        /// <param name="date">The date.</param>
+        /// <param path="date">The date.</param>
         /// <returns></returns>
         public static int WeekNumber(DateTime date)
         {
