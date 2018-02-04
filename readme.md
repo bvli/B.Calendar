@@ -7,7 +7,7 @@ Example of usage:
 ```csharp
 var thisYearsEaster = new HolidayCalculator().CalculateEasterSunday(DateTime.Now.Year);
 
-var nextYearWhitSunday = new HolidayCalculator().GetWhitSunday(DateTime.Now.AddYears(1));
+var nextYearWhitSunday = new HolidayCalculator().GetWhitSunday(DateTime.Now.AddYears(1).Year);
 ```
 
 The calculations for the most common (european) Christian holidays are defined. PR's are welcome if you miss some.
