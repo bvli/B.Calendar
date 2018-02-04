@@ -4,15 +4,6 @@
     <TargetFramework>netstandard1.0</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <Authors>bvli</Authors>
-    <Description>Simple utility for calculating Christian holidays</Description>
-    <Copyright>bvli, 2007</Copyright>
-    <PackageLicenseUrl>https://github.com/bvli/B.Calendar/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/bvli/B.Calendar</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/bvli/B.Calendar</RepositoryUrl>
-    <PackageTags>Calendar; Holiday; Holiday calculation; Easter; Easter calculation;</PackageTags>
-  </PropertyGroup>
+ 
 
 </Project>
