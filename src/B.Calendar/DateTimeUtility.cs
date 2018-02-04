@@ -1,7 +1,6 @@
 namespace B.Calendar
 {
     using System;
-    using System.Diagnostics;
 
     /// <summary>
     /// Contains <see cref="DateTime"/> utility methods.
@@ -20,9 +19,7 @@ namespace B.Calendar
                 throw new ArgumentOutOfRangeException(nameof(year));
             }
 
-            DateTime result = CalculateEasterSunday(year).AddDays(-49);
-            Debug.Assert(result.DayOfWeek == DayOfWeek.Sunday);
-            return result;
+            return CalculateEasterSunday(year).AddDays(-49);
         }
 
 
@@ -36,7 +33,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return CalculateEasterSunday(year).AddDays(-7);
@@ -52,11 +49,12 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return CalculateEasterSunday(year).AddDays(-3);
         }
+
         /// <summary>
         /// Gets the good friday of the specified <paramref name="year"/>.
         /// </summary>
@@ -67,7 +65,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return GetMaundyThursday(year).AddDays(1);
@@ -83,7 +81,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return CalculateEasterSunday(year).AddDays(1);
@@ -99,7 +97,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             // fourth friday after easter.
@@ -116,7 +114,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             // sixth thursday after easter.
@@ -133,7 +131,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return CalculateEasterSunday(year).AddDays(7 * 7);
@@ -149,7 +147,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return GetWhitSunday(year).AddDays(1);
@@ -165,7 +163,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             return CalculateEasterSunday(year).AddDays(-46);
@@ -181,7 +179,7 @@ namespace B.Calendar
         {
             if (0 > year || year > DateTime.MaxValue.Year)
             {
-                 throw new ArgumentOutOfRangeException(nameof(year));
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
 
             int a = year % 19;

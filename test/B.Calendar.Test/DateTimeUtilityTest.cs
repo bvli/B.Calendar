@@ -5,7 +5,6 @@ namespace B.Calendar.Test
 
     public class DateTimeUtilityTest
     {
-
         [Fact]
         public void EasterTest() {
             DateTime easter2008 = new DateTime(2008, 3, 23);
@@ -15,6 +14,13 @@ namespace B.Calendar.Test
             Assert.Equal(easter2008, DateTimeUtility.CalculateEasterSunday(2008));
             Assert.Equal(easter1961, DateTimeUtility.CalculateEasterSunday(1961));
             Assert.Equal(easter2007, DateTimeUtility.CalculateEasterSunday(2007));
+        }
+
+        [Fact]
+        public void CarnivalTest()
+        {
+            var carnival2008 = new DateTime(2008, 2, 3);
+            Assert.Equal(carnival2008, DateTimeUtility.GetCarnival(2008));
         }
 
         [Fact]
