@@ -1,18 +1,13 @@
-using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using B.Common.Properties;
-using System.Globalization;
-
-namespace B.Common
+namespace B.Calendar
 {
+    using System;
+    using System.Diagnostics;
+
     /// <summary>
     /// Contains <see cref="DateTime"/> utility methods.
     /// </summary>
     public static class DateTimeUtility
     {
-
-        #region -- Moving holydays --
         /// <summary>
         /// Gets the carnival sunday
         /// </summary>
@@ -20,10 +15,11 @@ namespace B.Common
         /// <returns></returns>
         public static DateTime GetCarnival(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             DateTime result = CalculateEasterSunday(year).AddDays(-49);
             Debug.Assert(result.DayOfWeek == DayOfWeek.Sunday);
             return result;
@@ -38,10 +34,11 @@ namespace B.Common
         /// <remarks>Sunday before Easter.</remarks>
         public static DateTime GetPalmSunday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return CalculateEasterSunday(year).AddDays(-7);
         }
 
@@ -53,24 +50,26 @@ namespace B.Common
         /// <remarks>The Thursday before Easter; commemorates the Last Supper.</remarks>
         public static DateTime GetMaundyThursday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return CalculateEasterSunday(year).AddDays(-3);
         }
         /// <summary>
-        /// Gets the good friday of the specified <paramref name="year"/>. 
+        /// Gets the good friday of the specified <paramref name="year"/>.
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns></returns>
         /// <remarks>Friday before Easter.</remarks>
         public static DateTime GetGoodFriday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return GetMaundyThursday(year).AddDays(1);
         }
 
@@ -82,10 +81,11 @@ namespace B.Common
         /// <remarks></remarks>
         public static DateTime GetEasterMonday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return CalculateEasterSunday(year).AddDays(1);
         }
 
@@ -97,11 +97,12 @@ namespace B.Common
         /// <remarks>This is a specific danish holyday.</remarks>
         public static DateTime GetGreatPrayerDay(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
-            //fourth friday after easter.
+
+            // fourth friday after easter.
             return CalculateEasterSunday(year).AddDays(5 + 3 * 7);
         }
 
@@ -113,11 +114,12 @@ namespace B.Common
         /// <remarks>Celebration of the Ascension of Christ into heaven; observed on the 40th day after Easter</remarks>
         public static DateTime GetAscensionDay(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
-            //sixth thursday after easter.
+
+            // sixth thursday after easter.
             return CalculateEasterSunday(year).AddDays(39);
         }
 
@@ -129,10 +131,11 @@ namespace B.Common
         /// <remarks>Seventh Sunday after Easter; commemorates the emanation of the Holy Spirit to the Apostles; a quarter day in Scotland.</remarks>
         public static DateTime GetWhitSunday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return CalculateEasterSunday(year).AddDays(7 * 7);
         }
 
@@ -144,10 +147,11 @@ namespace B.Common
         /// <remarks>The day after Whitsunday; a legal holiday in England and Wales and Ireland.</remarks>
         public static DateTime GetWhitMonday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return GetWhitSunday(year).AddDays(1);
         }
 
@@ -159,10 +163,11 @@ namespace B.Common
         /// <returns></returns>
         public static DateTime GetAshWednesday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             return CalculateEasterSunday(year).AddDays(-46);
         }
 
@@ -174,10 +179,11 @@ namespace B.Common
         /// <remarks>This method uses the algorithm specified in the wikipedia article: <a href="http://en.wikipedia.org/wiki/Computus">Computus</a>.</remarks>
         public static DateTime CalculateEasterSunday(int year)
         {
-            if (year > DateTime.MaxValue.Year)
+            if (0 > year || year > DateTime.MaxValue.Year)
             {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
+                 throw new ArgumentOutOfRangeException(nameof(year));
             }
+
             int a = year % 19;
             int b = year / 100;
             int c = year % 100;
@@ -192,58 +198,8 @@ namespace B.Common
             int m = (a + 11 * h + 22 * l) / 451;
             int month = (h + l - 7 * m + 114) / 31;
             int day = ((h + l - 7 * m + 114) % 31) + 1;
+
             return new DateTime(year, month, day).Date;
-        } 
-        #endregion
-
-        #region -- Weeknumber --
-        /// <summary>
-        /// Gets the week number of the specified date.
-        /// </summary>
-        /// <param path="year">The year.</param>
-        /// <param path="month">The month.</param>
-        /// <param path="day">The day.</param>
-        /// <returns></returns>
-        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow")]
-        public static int WeekNumber(int year, int month, int day)
-        {
-            //hrmpf
-            // System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("sv-SE", false);
-            // int week = culture.Calendar.GetWeekOfYear(DateTime.Now, System.Globalization.CalendarWeekRule.FirstFourDayWeek, System.DayOfWeek.Monday);
-            //
-            if (year > DateTime.MaxValue.Year)
-            {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidYear, "year");
-            }
-            if (month > DateTime.MaxValue.Month)
-            {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidMonth, "month");
-            }
-            if (day > DateTime.MaxValue.Day)
-            {
-                throw new ArgumentException(Resources.DateTimeUtil_InvalidDay, "day");
-            }
-            int a = (14 - month) / 12;
-            int y = year + 4800 - a;
-            int m = month + 12 * a - 3;
-            int JD = day + (153 * m + 2) / 5 + 365 * y + y / 4 - y / 100 + y / 400 - 32045;
-            int d4 = (((JD + 31741 - JD % 7) % 146097) % 36524) % 1461;
-            int L = d4 / 1460;
-            int d1 = ((d4 - L) % 365) + L;
-            return d1 / 7 + 1;
         }
-
-        /// <summary>
-        /// Gets the week number of the specified date.
-        /// </summary>
-        /// <param path="date">The date.</param>
-        /// <returns></returns>
-        public static int WeekNumber(DateTime date)
-        {
-            DateTime dt = date.Date;
-            return WeekNumber(dt.Year, dt.Month, dt.Day);
-        }
-
-        #endregion
     }
 }
