@@ -1,4 +1,4 @@
-namespace B.Calendar
+ï»¿namespace B.Calendar
 {
     using System;
 
@@ -44,7 +44,7 @@ namespace B.Calendar
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns></returns>
-        /// <remarks>The Thursday before Easter; commemorates the Last Supper.</remarks>
+        /// <remarks>The Thursday before Easter; commemorates the LastÂ Supper.</remarks>
         public static DateTime GetMaundyThursday(int year)
         {
             if (0 > year || year > DateTime.MaxValue.Year)
@@ -109,7 +109,7 @@ namespace B.Calendar
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns></returns>
-        /// <remarks>Celebration of the Ascension of Christ into heaven; observed on the 40th day after Easter</remarks>
+        /// <remarks>Celebration of the AscensionÂ ofÂ Christ into heaven; observed on the 40th day after Easter</remarks>
         public static DateTime GetAscensionDay(int year)
         {
             if (0 > year || year > DateTime.MaxValue.Year)
@@ -126,7 +126,7 @@ namespace B.Calendar
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns></returns>
-        /// <remarks>Seventh Sunday after Easter; commemorates the emanation of the Holy Spirit to the Apostles; a quarter day in Scotland.</remarks>
+        /// <remarks>Seventh Sunday after Easter; commemorates the emanation of the HolyÂ Spirit to the Apostles; a quarterÂ day in Scotland.</remarks>
         public static DateTime GetWhitSunday(int year)
         {
             if (0 > year || year > DateTime.MaxValue.Year)
@@ -142,7 +142,7 @@ namespace B.Calendar
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns></returns>
-        /// <remarks>The day after Whitsunday; a legal holiday in England and Wales and Ireland.</remarks>
+        /// <remarks>The day after Whitsunday; a legalÂ holiday in England and Wales and Ireland.</remarks>
         public static DateTime GetWhitMonday(int year)
         {
             if (0 > year || year > DateTime.MaxValue.Year)
@@ -182,20 +182,20 @@ namespace B.Calendar
                 throw new ArgumentOutOfRangeException(nameof(year));
             }
 
-            int a = year % 19;
-            int b = year / 100;
-            int c = year % 100;
-            int d = b / 4;
-            int e = b % 4;
-            int f = (b + 8) / 25;
-            int g = (b - f + 1) / 3;
-            int h = (19 * a + b - d - g + 15) % 30;
-            int i = c / 4;
-            int k = c % 4;
-            int l = (32 + 2 * e + 2 * i - h - k) % 7;
-            int m = (a + 11 * h + 22 * l) / 451;
-            int month = (h + l - 7 * m + 114) / 31;
-            int day = ((h + l - 7 * m + 114) % 31) + 1;
+            var a = year % 19;
+            var b = year / 100;
+            var c = year % 100;
+            var d = b / 4;
+            var e = b % 4;
+            var f = (b + 8) / 25;
+            var g = (b - f + 1) / 3;
+            var h = (19 * a + b - d - g + 15) % 30;
+            var i = c / 4;
+            var k = c % 4;
+            var l = (32 + 2 * e + 2 * i - h - k) % 7;
+            var m = (a + 11 * h + 22 * l) / 451;
+            var month = (h + l - 7 * m + 114) / 31;
+            var day = ((h + l - 7 * m + 114) % 31) + 1;
 
             return new DateTime(year, month, day).Date;
         }
